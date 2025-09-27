@@ -1,0 +1,90 @@
+Let's dive into what we
+mean by Machine Learning. Machine Learning is the
+study and construction of programs that are not
+explicitly programmed, but rather learn patterns as they're exposed to
+more data over time. So as we saw earlier, Machine Learning is going to be a subset of Artificial
+Intelligence. It's going to be a subset that's going to learn from
+observing data. The more data, the better the algorithm is able to learn
+the underlying patterns. I do want to note that the performance of these
+algorithms will plateau. So there will be a
+sense of diminishing returns after certain
+amount of data. But in general, the
+idea is going to be that as we gain more data, Machine Learning is
+going to be able to better understand the
+underlying patterns. So these programs learn
+from repeatedly seeing data rather than being
+explicitly programmed by humans. So it's not going to be a
+set of rules programmed by humans in order
+to make a decision. So as an example, let's say we're
+working with trying to decide whether emails
+are spam or not spam. We would start off with
+a dataset where we have a bunch of emails
+that are going to be labeled spam versus not spam. These emails will be
+preprocessed and fed through a Machine Learning
+algorithm that learns the patterns for spam
+versus not spam, and the more emails
+it has to learn the underlying patterns the better the model is going to get. Once the machine algorithm
+is trained we can then use it to predict as new
+emails are coming in. So we trained on
+this label dataset, and now we can run in production
+and as new emails come in we can predict
+spam versus not spam. So we're going to use this simple dataset here just to highlight what features are and
+what a target is. Features and target
+are going to be important terms for
+us to understand. So don't get distracted
+by the data itself as the main purpose of this slide is just to help
+define these terms. This iris dataset is
+a popular dataset often used to introduce basic concepts in Machine Learning. But we will move to more realistic complex datasets as we work through the course. So the iris here is going
+to be a flower that comes in three species as you
+see here: virginica, setosa, and
+versicolor, and that's going to be the target that
+we're trying to predict. So our dataset here
+contains four features, sepal length, and sepal width, petal length, and petal width. Those are going to be
+the features we will use to make our prediction. Then again as I mentioned before, the target variable
+is going to be the column that we're
+trying to predict. The idea is to use
+the four features, sepal length, sepal
+width, petal length, and petal width in order to predict the species and
+then moving forward if we had those four
+features we would be able to predict the
+species without the label. So in general there are two
+types of Machine Learning. There are supervised learning
+and unsupervised learning. Let's first go over the type of datasets that each
+is going to need. For supervised learning, we will have a target column or labels similar to what we just saw with the email spam and iris flower
+classification examples, and then for
+unsupervised learning on the other hand we will
+not have a target column. How this comes into
+play will make more sense in just a second. So let's discuss
+the goals of each supervised and
+unsupervised learning. The goal for
+supervised learning is going to be able to
+predict that label. Is it spam or is it not spam? Is it's versicolor or another one of the
+different flower species? For unsupervised learning,
+the goal is going to be to find an underlying structure of the dataset
+without any labels, and this will be clear
+with our examples. An example of supervised
+learning is fraud detection. We may have a large dataset
+where we have labels of either this transaction is fraud and this
+transaction is not fraud. We would learn from
+all the features related to fraud
+detection and be able to predict as new credit
+card transactions come in whether those
+are fraud or not fraud. For unsupervised
+learning, an example would be customer segmentation. For this, you can think about customer segmentation to find similar groupings
+within your dataset for a marketing campaign, you have this e-commerce data and you want to separate them out into groups in order to
+target them accordingly. For unsupervised learning, there's going to be no
+right or wrong answer. So the user will need to
+test different models and see which results tend
+to make the most sense. We'll get into this we have
+an entire lecture where we discuss different algorithms and techniques found to
+accomplish this task. So suppose you wanted to identify fraudulent credit
+card transactions, detecting fraud is going to be a common Machine
+Learning problem, You can define your features
+to be transaction time, transaction amounts, transaction location,
+category of purchase. Combining all of these
+features together, we should be able to predict in the future with transaction time, the amount location in
+the category of purchase, whether there's unusual activity, and whether this transaction
+is fraud versus not fraud. Generally speaking, this
+structured data with intuitive features
+are going to be a good task for our
+traditional Machine Learning.

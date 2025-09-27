@@ -1,0 +1,137 @@
+Welcome to the video From
+Attention to Transformers. After watching this video, you'll be able to describe the functionality and
+implementation of a scale dot-product attention mechanism with multiple heads, describe how the
+transformer architecture enhances the efficiency
+of attention mechanisms, and explain how to
+implement a series of encoder layer
+instances in PyTorch. Let's first look at scaled dot-product attention
+with multiple heads. The scaled dot-product
+attention mechanism within transformer models fundamentally
+involves a series of matrix multiplications
+incorporating queries Q, keys K, and a scaling factor to prevent the dot-product
+from becoming too large. Depending on the task type, a masking operation
+may be employed, and finally, the values V are multiplied to
+produce the output. In the self-attention
+architecture, the queries Q, keys K, and values V all derive from the same input column vector X. They are each multiplied by their respective learnable
+parameter matrices. For tasks such as
+language translation, cross-attention
+mechanisms are utilized wherein the values and keys come from a different
+input source, like the language that
+needs to be translated, represented as Z. Multihead
+attention operates by executing several scale dot-product attention
+processes in parallel. The output is called heads. This strategy
+allows each head to attend to distinct segments
+of the input sequence. For example, the input
+consists of embeddings displayed at the bottom as seven four-dimensional
+vectors in blue. The output is an enhanced
+set of embeddings depicted as seven four-dimensional
+vectors at the top in gray. You multiply the inputs by the learnable parameter and
+scale dot-product attention followed by a linear layer. Then you multiply the result by a final learnable parameter and the output is termed a head. In an example with
+multiple heads, each four-dimensional
+vector is split into two two-dimensional vectors,
+yielding 14 vectors. These split vectors
+are processed by their individual
+attention mechanisms. Subsequently, the 14 output
+vectors are concatenated, recombining the
+corresponding pairs to produce seven
+four-dimensional vectors, then the final linear
+layer is applied. You can scale the process for an arbitrary number of heads by concatenating the
+outputs of each head and then multiplying them
+by a final linear layer. The number of heads serves
+as a hyperparameter, with the sole
+constraint being that the input dimension must be divisible by the
+number of heads. Consider the phrase, heavy snow makes driving more difficult. You can see that makes has
+multiple dependencies, including snow more
+and difficult. In this instance,
+the color blocks represent different heads
+in the multihead attention. Each head focuses on a
+different dependency. One of the attention
+heads focuses on the distant dependency
+of the verb makes, completing the phrase
+makes more difficult. Other heads focus on
+snow and driving. You can utilize the
+nn.MultiheadAttention module of PyTorch to initialize the multihead underscore
+attention object with an embedding dimension of four and two attention heads. You must ensure that the number
+of embedded dimensions is divisible by the number of heads by performing a modulus check. The multihead attention object
+is then instantiated with the specified parameters You can explicitly set batch
+first to false, adhering to the standard
+sequence processing convention. Randomly generated query, key, and value tensors with
+a sequence length of 10 and a batch size
+of five are created. You can then invoke
+the forward method of the multihead
+attention mechanism. The output size matches one of the input sizes, signifying
+consistent dimensionality. It's important to note that
+multihead attention is merely one component of the broader transformer
+architecture. The efficiency of
+attention mechanisms can be enhanced by incorporating
+additional layers, as in the case of transformers. The two primary types of transformers are
+encoders and decoders. In the encoder phase
+of a transformer, the multihead attention
+mechanism initiates the process by handling word
+embeddings that have been combined with
+positional encodings. Only the input,
+represented as X, is passed to the
+multihead attention. Unlike some models,
+encoder models do not apply masking directly to
+the attention mechanism. The next step is the
+normalization process, referred to as add and Norm. It is essential as it merges
+the attention output with its original input embeddings
+and normalizes the result. This process enhances
+the depth of the model while mitigating potential
+issues with gradients. Subsequently, a
+feed-forward network applies a fully connected
+layer to each position, followed by an additional
+add and norm phase. Depending on the requirements
+of the specific use case, further layers can be integrated
+into the architecture. In the transformers decoder, the multi-head attention
+layer is distinctively masked to prohibit
+foresight into future data. This design ensures
+that each position can only attend to earlier
+positions in the sequence. Additionally,
+normalization layers are employed consistently
+throughout the decoder. For complex tasks like
+language translation, a cross-attention
+layer is incorporated. Following this, a position-wise feed-forward network applies a fully connected
+layer independently to each position succeeding
+by an add and norm step, further refining the output. While decoders primarily
+drive language generation, they also include a
+final linear layer analogous to a neural network, which maps embeddings
+to word predictions. In PyTorch implementations, a masked encoder can be adapted to perform similarly
+to a decoder, which may seem confusing. Stacking multiple
+transformer layers and series allows
+the modeling of complex relationships
+and representations within the data across
+different levels. In this instance, you
+stack two encoder layers. This layer depth is an
+important hyperparameter that can be adjusted to
+enhance performance. Let's see how you can
+construct a series of encoder layer
+instances in PyTorch. First, specify the number of attention heads and the
+dimensions of the embeddings. Then determine the
+desired number of layers. The next step is to create a transformer encoder
+layer object by specifying the
+number of heads in the dimensionality
+of the embeddings, then provide the
+number of layers to the transformer
+encoder constructor to assemble a sequence
+of encoder layers. Positional encodings
+are added before this. You can randomly initialize the input tensor X with dimensions corresponding
+to sequence length, batch size, and
+embedding dimension. When X is passed through
+the transformer encoder, it is processed sequentially across all the encoder layers. Each layer applies
+multihead self-attention, followed by feed-forward
+neural networks incorporating residual connections and layer normalization
+at each step. You can see that the
+output embeddings retain the same
+size as the input. Let's now recap
+what you learned. In this video, you learned that the scale dot-product
+attention mechanism involves a series of matrix
+multiplications that incorporate queries, keys, and a scaling factor. A masking operation
+may be employed, and the values are multiplied
+to produce the output. Multihead attention
+operates by executing several scale dot-product attention processes in parallel. The efficiency of
+attention mechanisms can be enhanced by incorporating
+additional layers, as in the case of transformers. Stacking multiple
+transformer layers in series allows the modeling of complex relationships
+and representations within the data across
+different levels.
